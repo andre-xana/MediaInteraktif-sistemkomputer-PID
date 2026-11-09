@@ -1,0 +1,80 @@
+{
+  "entities": {
+    "AssessmentSubmission": {
+      "title": "AssessmentSubmission",
+      "description": "Hasil asesmen yang diselesaikan oleh siswa",
+      "type": "object",
+      "properties": {
+        "studentName": {
+          "type": "string",
+          "description": "Nama lengkap siswa",
+          "minLength": 1,
+          "maxLength": 128
+        },
+        "studentClass": {
+          "type": "string",
+          "description": "Kelas atau rombel siswa",
+          "minLength": 1,
+          "maxLength": 64
+        },
+        "totalScore": {
+          "type": "number",
+          "description": "Skor akhir yang diperoleh (0-100)"
+        },
+        "maxScore": {
+          "type": "number",
+          "description": "Skor maksimal (100)"
+        },
+        "durationSeconds": {
+          "type": "number",
+          "description": "Durasi pengerjaan dalam detik"
+        },
+        "passed": {
+          "type": "boolean",
+          "description": "Apakah siswa memenuhi KKM (>= 75)"
+        },
+        "correctCount": {
+          "type": "number",
+          "description": "Jumlah soal yang dijawab dengan benar"
+        },
+        "totalQuestions": {
+          "type": "number",
+          "description": "Total soal asesmen (15)"
+        },
+        "submittedAt": {
+          "type": "string",
+          "description": "Waktu pengumpulan ISO string"
+        }
+      },
+      "required": ["studentName", "studentClass", "totalScore", "durationSeconds", "submittedAt"]
+    },
+    "TeacherConfig": {
+      "title": "TeacherConfig",
+      "description": "Konfigurasi keamanan dan PIN rahasia guru",
+      "type": "object",
+      "properties": {
+        "teacherPin": {
+          "type": "string",
+          "description": "PIN rahasia untuk otorisasi panel guru",
+          "minLength": 4,
+          "maxLength": 32
+        },
+        "updatedAt": {
+          "type": "string",
+          "description": "Waktu pembaruan PIN"
+        }
+      },
+      "required": ["teacherPin"]
+    }
+  },
+  "firestore": {
+    "/assessments/{assessmentId}": {
+      "schema": "AssessmentSubmission",
+      "description": "Koleksi data hasil asesmen seluruh siswa yang dapat dibaca oleh guru"
+    },
+    "/settings/{settingId}": {
+      "schema": "TeacherConfig",
+      "description": "Dokumen pengaturan sistem dan PIN guru yang tersimpan di Cloud Database"
+    }
+  }
+}

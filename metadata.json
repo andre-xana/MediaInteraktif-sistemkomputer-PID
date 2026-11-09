@@ -1,0 +1,6 @@
+{
+  "name": "Media Interaktif Sistem Komputer",
+  "description": "Media pembelajaran interaktif Bahasa Indonesia tentang materi Sistem Komputer (Hardware, Software, Brainware, I/P/O/S, Komponen Utama, dan Sistem Operasi) dilengkapi kuis, permainan mencocokkan, dan asesmen berbatas waktu.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
